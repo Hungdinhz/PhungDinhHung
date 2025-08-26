@@ -1,0 +1,41 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+<h1>Game play</h1>
+<button onclick="startGame()">Start Game</button>
+<button onclick="stopGame()">Stop Game</button>
+<p id="gameStatus">Game is not started.</p>
+<script>
+    let gameInterval;
+    function startGame() {
+        if (!gameInterval) {
+            document.getElementById('gameStatus').innerText = 'Game is running...';
+            gameInterval = setInterval(() => {
+                console.log('Game tick');
+            }, 1000);
+        }
+    }
+    function stopGame() {
+        if (gameInterval) {
+            clearInterval(gameInterval);
+            gameInterval = null;
+            document.getElementById('gameStatus').innerText = 'Game is stopped.';
+        }
+    }
+
+</script>
+<style>
+    button {
+        margin: 5px;
+        padding: 10px 20px;
+        font-size: 16px;
+        cursor: pointer;
+    }
+    #gameStatus {
+        font-weight: bold;
+        margin-top: 20px;
+    }
+</style>
+
